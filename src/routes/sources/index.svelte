@@ -52,7 +52,7 @@
 	{:else}
 		<div class="flex flex-wrap justify-center">
 			{#each sources as source}
-				<a href="/sources/{source.id}" class="no-underline p-2 w-96">
+				<a href="/sources/{source.id}" class="no-underline p-2 sm:w-96 w-full">
 					<div
 						class="box-selection hover:bg-orange-600 group"
 						class:border-red-500={source.gitlabApp && !source.gitlabAppId}

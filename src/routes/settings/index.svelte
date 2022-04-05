@@ -31,6 +31,7 @@
 	import { browser } from '$app/env';
 	import { getDomain } from '$lib/components/common';
 	import { toast } from '@zerodevx/svelte-toast';
+	import Input from '$lib/components/Input.svelte';
 
 	let isRegistrationEnabled = settings.isRegistrationEnabled;
 	let dualCerts = settings.dualCerts;
@@ -118,34 +119,26 @@
 					>
 				{/if}
 			</div>
-			<div class="grid grid-flow-row gap-2 px-10">
-				<div class="grid grid-cols-2 items-start">
-					<div class="flex-col">
-						<div class="pt-2 text-base font-bold text-stone-100">URL (FQDN)</div>
-						<Explainer
-							text="If you specify <span class='text-yellow-500 font-bold'>https</span>, Coolify will be accessible only over https. SSL certificate will be generated for you.<br>If you specify <span class='text-yellow-500 font-bold'>www</span>, Coolify will be redirected (302) from non-www and vice versa."
-						/>
-					</div>
-					<div class="justify-start text-left">
-						<input
-							bind:value={fqdn}
-							readonly={!$session.isAdmin || isFqdnSet}
-							disabled={!$session.isAdmin || isFqdnSet}
-							name="fqdn"
-							id="fqdn"
-							pattern="^https?://([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{'{'}2,{'}'}$"
-							placeholder="eg: https://coolify.io"
-						/>
-					</div>
-				</div>
-				<div class="grid grid-cols-2 items-start py-6">
+			<div class="psz-2 grid grid-flow-row gap-2 sm:px-10">
+				<Input
+					label="URL (FQDN)"
+					explainer="If you specify <span class='text-yellow-500 font-bold'>https</span>, Coolify will be accessible only over https. SSL certificate will be generated for you.<br>If you specify <span class='text-yellow-500 font-bold'>www</span>, Coolify will be redirected (302) from non-www and vice versa."
+					bind:value={fqdn}
+					readonly={!$session.isAdmin || isFqdnSet}
+					disabled={!$session.isAdmin || isFqdnSet}
+					name="fqdn"
+					pattern="^https?://([a-z0-9]+(-[a-z0-9]+)*\.)+[a-z]{'{'}2,{'}'}$"
+					placeholder="eg: https://coolify.io"
+				/>
+
+				<div class="grid items-start py-6 sm:grid-cols-2">
 					<div class="flex-col">
 						<div class="pt-2 text-base font-bold text-stone-100">Public Port Range</div>
 						<Explainer
 							text="Ports used to expose databases/services/internal services.<br> Add them to your firewall (if applicable).<br><br>You can specify a range of ports, eg: <span class='text-yellow-500 font-bold'>9000-9100</span>"
 						/>
 					</div>
-					<div class="mx-auto flex-row items-center justify-center space-y-2">
+					<div class="mx-auto flex-row items-center space-y-2 sm:justify-center">
 						<input
 							class="h-8 w-20 px-2"
 							type="number"
@@ -163,7 +156,7 @@
 						/>
 					</div>
 				</div>
-				<div class="grid grid-cols-2 items-center">
+				<div class="grid items-center sm:grid-cols-2">
 					<Setting
 						dataTooltip="Must remove the domain before you can change this setting."
 						disabled={isFqdnSet}
@@ -173,7 +166,7 @@
 						on:click={() => !isFqdnSet && changeSettings('dualCerts')}
 					/>
 				</div>
-				<div class="grid grid-cols-2 items-center">
+				<div class="grid items-center sm:grid-cols-2">
 					<Setting
 						bind:setting={isRegistrationEnabled}
 						title="Registration allowed?"
@@ -196,8 +189,8 @@
 							':8404'
 			} target="_blank">stats</a> page.`}
 		/>
-		<div class="space-y-2 px-10 py-5">
-			<div class="grid grid-cols-2 items-center">
+		<div class="space-y-2 px-2 py-5 sm:px-10">
+			<div class="grid items-center sm:grid-cols-2">
 				<label for="proxyUser">User</label>
 				<CopyPasswordField
 					readonly
@@ -207,7 +200,7 @@
 					value={settings.proxyUser}
 				/>
 			</div>
-			<div class="grid grid-cols-2 items-center">
+			<div class="grid items-center sm:grid-cols-2">
 				<label for="proxyPassword">Password</label>
 				<CopyPasswordField
 					readonly

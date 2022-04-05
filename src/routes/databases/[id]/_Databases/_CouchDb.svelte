@@ -6,8 +6,8 @@
 <div class="flex space-x-1 py-5 font-bold">
 	<div class="title">CouchDB</div>
 </div>
-<div class="space-y-2 px-10">
-	<div class="grid grid-cols-2 items-center">
+<div class="space-y-2 px-2 sm:px-10">
+	<div class="grid items-center sm:grid-cols-2">
 		<label for="defaultDatabase" class="text-base font-bold text-stone-100">Default Database</label>
 		<CopyPasswordField
 			required
@@ -19,7 +19,7 @@
 			bind:value={database.defaultDatabase}
 		/>
 	</div>
-	<div class="grid grid-cols-2 items-center">
+	<div class="grid items-center sm:grid-cols-2">
 		<label for="dbUser" class="text-base font-bold text-stone-100">User</label>
 		<CopyPasswordField
 			readonly
@@ -30,7 +30,7 @@
 			value={database.dbUser}
 		/>
 	</div>
-	<div class="grid grid-cols-2 items-center">
+	<div class="grid items-center sm:grid-cols-2">
 		<label for="dbUserPassword" class="text-base font-bold text-stone-100">Password</label>
 		<CopyPasswordField
 			readonly
@@ -42,7 +42,7 @@
 			value={database.dbUserPassword}
 		/>
 	</div>
-	<div class="grid grid-cols-2 items-center">
+	<div class="grid items-center sm:grid-cols-2">
 		<label for="rootUser" class="text-base font-bold text-stone-100">Root User</label>
 		<CopyPasswordField
 			readonly
@@ -53,7 +53,7 @@
 			value={database.rootUser}
 		/>
 	</div>
-	<div class="grid grid-cols-2 items-center">
+	<div class="grid items-center sm:grid-cols-2">
 		<label for="rootUserPassword" class="text-base font-bold text-stone-100">Root's Password</label>
 		<CopyPasswordField
 			readonly

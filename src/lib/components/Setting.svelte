@@ -10,7 +10,7 @@
 </script>
 
 <div class="flex items-center py-4 pr-8">
-	<div class="flex w-96 flex-col">
+	<div class="flex w-full flex-col sm:w-96">
 		<div class="text-xs font-bold text-stone-100 md:text-base">{title}</div>
 		<Explainer text={description} />
 	</div>
@@ -19,7 +19,7 @@
 	class:tooltip={dataTooltip}
 	class:text-center={isCenter}
 	data-tooltip={dataTooltip}
-	class="flex justify-center"
+	class="flex sm:justify-center"
 >
 	<div
 		type="button"

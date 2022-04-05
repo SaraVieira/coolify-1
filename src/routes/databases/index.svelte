@@ -41,7 +41,7 @@
 		</div>
 	{:else}
 		{#each databases as database}
-			<a href="/databases/{database.id}" class="no-underline p-2 w-96">
+			<a href="/databases/{database.id}" class="no-underline p-2 sm:w-96 w-full">
 				<div class="box-selection relative hover:bg-purple-600 group">
 					{#if database.type === 'clickhouse'}
 						<Clickhouse isAbsolute />

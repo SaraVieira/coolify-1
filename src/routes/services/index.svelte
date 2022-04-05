@@ -46,7 +46,7 @@
 		</div>
 	{:else}
 		{#each services as service}
-			<a href="/services/{service.id}" class="no-underline p-2 w-96">
+			<a href="/services/{service.id}" class="no-underline p-2 sm:w-96 w-full">
 				<div class="box-selection relative hover:bg-pink-600 group">
 					{#if service.type === 'plausibleanalytics'}
 						<PlausibleAnalytics isAbsolute />

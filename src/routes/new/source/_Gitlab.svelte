@@ -2,6 +2,7 @@
 	export let gitSource;
 	import { goto } from '$app/navigation';
 	import { post } from '$lib/api';
+	import Input from '$lib/components/Input.svelte';
 
 	import { errorNotification } from '$lib/form';
 	import { onMount } from 'svelte';
@@ -27,47 +28,38 @@
 			<div class="text-xl font-bold text-white">Configuration</div>
 			<button type="submit" class="bg-orange-600 hover:bg-orange-500">Save</button>
 		</div>
-		<div class="grid grid-cols-2 items-center px-10">
+		<div class="grid items-center sm:grid-cols-2">
 			<label for="type" class="text-base font-bold text-stone-100">Type</label>
-			<select name="type" id="type" class="w-96" bind:value={gitSource.type}>
+			<select name="type" id="type" bind:value={gitSource.type}>
 				<option value="github">GitHub</option>
 				<option value="gitlab">GitLab</option>
 				<option value="bitbucket">BitBucket</option>
 			</select>
 		</div>
-		<div class="grid grid-cols-2 items-center px-10">
-			<label for="name" class="text-base font-bold text-stone-100">Name</label>
-			<input
-				name="name"
-				id="name"
-				placeholder="GitHub.com"
-				required
-				bind:this={nameEl}
-				bind:value={gitSource.name}
-			/>
-		</div>
+		<Input
+			label="Name"
+			name="name"
+			placeholder="GitHub.com"
+			required
+			bind:this={nameEl}
+			bind:value={gitSource.name}
+		/>
+		<Input
+			label="HTML URL"
+			type="url"
+			name="htmlUrl"
+			placeholder="eg: https://github.com"
+			required
+			bind:value={gitSource.htmlUrl}
+		/>
 
-		<div class="grid grid-cols-2 items-center px-10">
-			<label for="htmlUrl" class="text-base font-bold text-stone-100">HTML URL</label>
-			<input
-				type="url"
-				name="htmlUrl"
-				id="htmlUrl"
-				placeholder="eg: https://github.com"
-				required
-				bind:value={gitSource.htmlUrl}
-			/>
-		</div>
-		<div class="grid grid-cols-2 items-center px-10">
-			<label for="apiUrl" class="text-base font-bold text-stone-100">API URL</label>
-			<input
-				name="apiUrl"
-				type="url"
-				id="apiUrl"
-				placeholder="eg: https://api.github.com"
-				required
-				bind:value={gitSource.apiUrl}
-			/>
-		</div>
+		<Input
+			label="API URL"
+			name="apiUrl"
+			type="url"
+			placeholder="eg: https://api.github.com"
+			required
+			bind:value={gitSource.apiUrl}
+		/>
 	</form>
 </div>

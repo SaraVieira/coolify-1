@@ -6,8 +6,8 @@
 <div class="flex space-x-1 py-5 font-bold">
 	<div class="title">MongoDB</div>
 </div>
-<div class="space-y-2 px-10">
-	<div class="grid grid-cols-2 items-center">
+<div class="space-y-2 px-2 sm:px-10">
+	<div class="grid items-center sm:grid-cols-2">
 		<label for="rootUser" class="text-base font-bold text-stone-100">Root User</label>
 		<CopyPasswordField
 			placeholder="Generated automatically after start"
@@ -18,7 +18,7 @@
 			value={database.rootUser}
 		/>
 	</div>
-	<div class="grid grid-cols-2 items-center">
+	<div class="grid items-center sm:grid-cols-2">
 		<label for="rootUserPassword" class="text-base font-bold text-stone-100">Root's Password</label>
 		<CopyPasswordField
 			placeholder="Generated automatically after start"

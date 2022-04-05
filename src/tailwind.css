@@ -31,10 +31,10 @@ main,
 }
 
 input {
-	@apply h-12 w-96 rounded border border-transparent bg-transparent bg-coolgray-200 p-2 text-xs tracking-tight text-white placeholder-stone-600 outline-none transition duration-150 hover:bg-coolgray-500 focus:bg-coolgray-500 disabled:border disabled:border-dashed disabled:border-coolgray-300 disabled:bg-transparent md:text-sm;
+	@apply h-12 rounded border border-transparent bg-transparent bg-coolgray-200 p-2 text-xs tracking-tight text-white placeholder-stone-600 outline-none transition duration-150 hover:bg-coolgray-500 focus:bg-coolgray-500 disabled:border disabled:border-dashed disabled:border-coolgray-300 disabled:bg-transparent sm:w-96 md:text-sm;
 }
 textarea {
-	@apply min-w-[24rem] rounded border border-transparent bg-transparent bg-coolgray-200 p-2 text-xs tracking-tight text-white placeholder-stone-600 outline-none transition duration-150 hover:bg-coolgray-500 focus:bg-coolgray-500 disabled:border disabled:border-dashed disabled:border-coolgray-300 disabled:bg-transparent md:text-sm;
+	@apply w-full rounded border border-transparent bg-transparent bg-coolgray-200 p-2 text-xs tracking-tight text-white placeholder-stone-600 outline-none transition duration-150 hover:bg-coolgray-500 focus:bg-coolgray-500 disabled:border disabled:border-dashed disabled:border-coolgray-300 disabled:bg-transparent sm:min-w-[24rem] md:text-sm;
 }
 
 #svelte .custom-select-wrapper .selectContainer.disabled input {
@@ -61,7 +61,7 @@ textarea {
 }
 
 select {
-	@apply h-12 w-96 rounded bg-coolgray-200  p-2 text-xs font-bold tracking-tight text-white placeholder-stone-600 outline-none transition duration-150 hover:bg-coolgray-500 focus:bg-coolgray-500 disabled:text-stone-600 md:text-sm;
+	@apply h-12 rounded bg-coolgray-200 p-2  text-xs font-bold tracking-tight text-white placeholder-stone-600 outline-none transition duration-150 hover:bg-coolgray-500 focus:bg-coolgray-500 disabled:text-stone-600 sm:w-96 md:text-sm;
 }
 .svelte-select {
 	--background: rgb(32 32 32);

@@ -15,6 +15,7 @@
 	import { browser } from '$app/env';
 	import { post } from '$lib/api';
 	import { getDomain } from '$lib/components/common';
+	import Input from '$lib/components/Input.svelte';
 
 	const { id } = $page.params;
 	let loading = false;
@@ -89,40 +90,36 @@
 			{/if}
 		</div>
 
-		<div class="grid grid-flow-row gap-2 px-10">
-			<div class="grid grid-cols-2 items-center">
-				<label for="name" class="text-base font-bold text-stone-100">Name</label>
-				<input
-					readonly={!$session.isAdmin}
-					name="name"
-					id="name"
-					bind:value={database.name}
-					required
+		<div class="grid grid-flow-row gap-2 px-2 sm:px-10">
+			<Input
+				label="Name"
+				readonly={!$session.isAdmin}
+				name="name"
+				bind:value={database.name}
+				required
+			/>
+			{#if database.destinationDockerId}
+				<Input
+					label="Destination"
+					value={database.destinationDocker.name}
+					name="destination"
+					disabled
+					readonly
+					class="bg-transparent "
 				/>
-			</div>
-			<div class="grid grid-cols-2 items-center">
-				<label for="destination" class="text-base font-bold text-stone-100">Destination</label>
-				{#if database.destinationDockerId}
-					<div class="no-underline">
-						<input
-							value={database.destinationDocker.name}
-							id="destination"
-							disabled
-							readonly
-							class="bg-transparent "
-						/>
-					</div>
-				{/if}
-			</div>
-
-			<div class="grid grid-cols-2 items-center">
-				<label for="version" class="text-base font-bold text-stone-100">Version</label>
-				<input value={database.version} readonly disabled class="bg-transparent " />
-			</div>
+			{/if}
+			<Input
+				name="version"
+				label="Version"
+				value={database.version}
+				readonly
+				disabled
+				class="bg-transparent "
+			/>
 		</div>
 
-		<div class="grid grid-flow-row gap-2 px-10 pt-2">
-			<div class="grid grid-cols-2 items-center">
+		<div class="grid grid-flow-row gap-2 px-2 pt-2 sm:px-10">
+			<div class="grid items-center sm:grid-cols-2">
 				<label for="host" class="text-base font-bold text-stone-100">Host</label>
 				<CopyPasswordField
 					placeholder="Generated automatically after start"
@@ -134,7 +131,7 @@
 					value={database.id}
 				/>
 			</div>
-			<div class="grid grid-cols-2 items-center">
+			<div class="grid items-center sm:grid-cols-2">
 				<label for="publicPort" class="text-base font-bold text-stone-100">Port</label>
 				<CopyPasswordField
 					placeholder="Generated automatically after set to public"
@@ -158,7 +155,7 @@
 			{:else if database.type === 'couchdb'}
 				<CouchDb bind:database />
 			{/if}
-			<div class="grid grid-cols-2 items-center px-10 pb-8">
+			<div class="grid items-center px-2 pb-8 sm:grid-cols-2 sm:px-10">
 				<label for="url" class="text-base font-bold text-stone-100">Connection String</label>
 				<CopyPasswordField
 					textarea={true}
@@ -176,8 +173,8 @@
 	<div class="flex space-x-1 pb-5 font-bold">
 		<div class="title">Features</div>
 	</div>
-	<div class="px-10 pb-10">
-		<div class="grid grid-cols-2 items-center">
+	<div class="px-2 pb-10 sm:px-10">
+		<div class="grid items-center sm:grid-cols-2">
 			<Setting
 				bind:setting={isPublic}
 				on:click={() => changeSettings('isPublic')}
@@ -186,7 +183,7 @@
 			/>
 		</div>
 		{#if database.type === 'redis'}
-			<div class="grid grid-cols-2 items-center">
+			<div class="grid items-center sm:grid-cols-2">
 				<Setting
 					bind:setting={appendOnly}
 					on:click={() => changeSettings('appendOnly')}
