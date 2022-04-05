@@ -11,6 +11,7 @@
 	import CopyPasswordField from '$lib/components/CopyPasswordField.svelte';
 	import { onMount } from 'svelte';
 	import { generateRemoteEngine } from '$lib/components/common';
+	import Input from '$lib/components/Input.svelte';
 	const { id } = $page.params;
 	let cannotDisable = settings.fqdn && destination.engine === '/var/run/docker.sock';
 	// let scannedApps = [];
@@ -126,8 +127,8 @@
 </script>
 
 <form on:submit|preventDefault={handleSubmit} class="grid grid-flow-row gap-2 py-4">
-	<div class="flex space-x-1 pb-5">
-		<div class="title font-bold">Configuration</div>
+	<div class="space-x-1 pb-5 sm:flex">
+		<div class="title mb-2 font-bold sm:mb-0">Configuration</div>
 		{#if $session.isAdmin}
 			<button
 				type="submit"
@@ -148,18 +149,16 @@
 				>Scan for applications</button
 			> -->
 	</div>
-	<div class="grid grid-cols-2 items-center px-10 ">
-		<label for="name" class="text-base font-bold text-stone-100">Name</label>
-		<input
-			name="name"
-			placeholder="name"
-			disabled={!$session.isAdmin}
-			readonly={!$session.isAdmin}
-			bind:value={destination.name}
-		/>
-	</div>
+	<Input
+		name="name"
+		placeholder="name"
+		disabled={!$session.isAdmin}
+		readonly={!$session.isAdmin}
+		bind:value={destination.name}
+		label="Name"
+	/>
 
-	<div class="grid grid-cols-2 items-center px-10">
+	<div class="grid items-center sm:grid-cols-2 sm:px-10">
 		<label for="engine" class="text-base font-bold text-stone-100">Engine</label>
 		<CopyPasswordField
 			id="engine"
@@ -174,7 +173,7 @@
 			<label for="remoteEngine">Remote Engine?</label>
 			<input name="remoteEngine" type="checkbox" bind:checked={payload.remoteEngine} />
 		</div> -->
-	<div class="grid grid-cols-2 items-center px-10">
+	<div class="sn:grid-cols-2 grid items-center sm:px-10">
 		<label for="network" class="text-base font-bold text-stone-100">Network</label>
 		<CopyPasswordField
 			id="network"
@@ -185,7 +184,7 @@
 			value={destination.network}
 		/>
 	</div>
-	<div class="grid grid-cols-2 items-center">
+	<div class="grid items-center sm:grid-cols-2">
 		<Setting
 			disabled={cannotDisable}
 			bind:setting={destination.isCoolifyProxyUsed}

@@ -38,9 +38,9 @@
 	import RemoteDocker from './_RemoteDocker.svelte';
 </script>
 
-<div class="flex space-x-1 p-6 text-2xl font-bold">
+<div class="space-x-1 p-6 text-2xl font-bold sm:flex">
 	<div class="tracking-tight">Destination</div>
-	<span class="arrow-right-applications px-1">></span>
+	<span class="arrow-right-applications hidden px-1 sm:block">></span>
 	<span class="pr-2">{destination.name}</span>
 </div>
 

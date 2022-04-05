@@ -4,6 +4,7 @@
 	export let payload;
 
 	import { post } from '$lib/api';
+	import Input from '$lib/components/Input.svelte';
 	import Setting from '$lib/components/Setting.svelte';
 	import { errorNotification } from '$lib/form';
 
@@ -38,25 +39,23 @@
 					: 'Save'}</button
 			>
 		</div>
-		<div class="mt-2 grid grid-cols-2 items-center px-10">
-			<label for="name" class="text-base font-bold text-stone-100">Name</label>
-			<input required name="name" placeholder="name" bind:value={payload.name} />
-		</div>
+		<Input label="Name" required name="name" placeholder="name" bind:value={payload.name} />
+		<Input
+			label="Engine"
+			required
+			name="engine"
+			placeholder="eg: /var/run/docker.sock"
+			bind:value={payload.engine}
+		/>
+		<Input
+			label="Network"
+			required
+			name="network"
+			placeholder="default: coolify"
+			bind:value={payload.network}
+		/>
 
-		<div class="grid grid-cols-2 items-center px-10">
-			<label for="engine" class="text-base font-bold text-stone-100">Engine</label>
-			<input
-				required
-				name="engine"
-				placeholder="eg: /var/run/docker.sock"
-				bind:value={payload.engine}
-			/>
-		</div>
-		<div class="grid grid-cols-2 items-center px-10">
-			<label for="network" class="text-base font-bold text-stone-100">Network</label>
-			<input required name="network" placeholder="default: coolify" bind:value={payload.network} />
-		</div>
-		<div class="grid grid-cols-2 items-center">
+		<div class="grid items-center sm:grid-cols-2">
 			<Setting
 				bind:setting={payload.isCoolifyProxyUsed}
 				on:click={() => (payload.isCoolifyProxyUsed = !payload.isCoolifyProxyUsed)}
